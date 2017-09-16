@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Instagram from './instagram.js';
+import User from './user.js';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         </div>
         <div className="App-intro">
           <Instagram/>
+          <User/>
         </div>
       </div>
     );
