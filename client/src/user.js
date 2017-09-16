@@ -6,19 +6,17 @@ class User extends Component {
     super(props);
 
     this.state = {
-      customerID: 10097958367,
+      customerID: 19129198130,
       name: "",
       age: "",
-      relationship: "",
-      income: ""
+      relationship: "Has child",
+      income: "500 000 kr" // Get from skatteetaten API
     };
 
-    this.getAge = this.getAge.bind(this);
-    //this.getAge("1994-08-28");
+
   }
 
-  getAge(dateString){
-    //console.log("hei"+dateString);
+  getAge = (dateString) => {
     var res = dateString.split("-");
     var today = new Date();
     var birthDate = new Date(res[0], res[1], res[2]);
@@ -64,7 +62,7 @@ class User extends Component {
     return (
       <div>
         <p>{this.state.name}</p>
-        <p>{this.state.age}</p>
+        <p>{this.state.age} years old</p>
         <p>{this.state.relationship}</p>
         <p>{this.state.income}</p>
       </div>
