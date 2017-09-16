@@ -27,7 +27,7 @@ class MainPage extends Component {
           </h2>
           <span className="green-text heart">♡</span>
           <h2 className="green-text lovers-bottom">
-            Area
+            [Area]
           </h2>
 
           <div className="circle-wrapper green-text">
@@ -70,6 +70,7 @@ class MainPage extends Component {
             </h3>
           </div>
 
+          <h1 className="green-text">What's up at [Area]?</h1>
           <Instagram/>
           {/*<User/>*/}
         </div>

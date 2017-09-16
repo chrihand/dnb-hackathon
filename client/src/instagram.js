@@ -34,7 +34,6 @@ class Instagram extends Component {
 
     return (
       <div className='container'>
-        <h1 className="green-text">What's up?</h1>
         <img src={instaLogo} alt="Instagram Logo" style={divStyle}/>
         <Slider images={this.state.imageUrl} isInfinite delay={5000}>
           {this.state.imageUrl.map((image, key) => <div key={key}><img src={image} /></div>)}
