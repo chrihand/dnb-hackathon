@@ -3,6 +3,9 @@ import logoDnb from './dnb-logo-cropped.png';
 import user from './user.png';
 import './index.css';
 import './MainPage.css';
+import Instagram from './instagram.js';
+import User from './user.js';
+
 
 class MainPage extends Component {
   render() {
@@ -64,8 +67,10 @@ class MainPage extends Component {
           </div>
         </div>
         <div className="map-background">
-          
+
         </div>
+        <Instagram/>
+        <User/>
       </div>
     );
   }

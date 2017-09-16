@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './index.css';
 import './App.css';
 import MainPage from './MainPage.js'
+
 class App extends Component {
   render() {
     return (
@@ -14,3 +14,6 @@ class App extends Component {
 }
 
 export default App;
+
+
+1031832805
