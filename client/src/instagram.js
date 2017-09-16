@@ -20,7 +20,7 @@ class Instagram extends Component {
     .then(response => response.text())
     .then(contents => {
       this.setState ({
-        imageUrl: [JSON.parse(contents).data[0].images.standard_resolution.url, JSON.parse(contents).data[1].images.standard_resolution.url]
+        imageUrl: [JSON.parse(contents).data[0].images.standard_resolution.url, JSON.parse(contents).data[1].images.standard_resolution.url, JSON.parse(contents).data[2].images.standard_resolution.url]
       });
     })
     .catch(console.log("Can’t access " + url + " response. Blocked by browser?"))
