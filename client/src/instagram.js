@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Slider from 'react-image-slider';
 import './../node_modules/react-image-slider/lib/image-slider.css';
 import instaLogo from './instagram.png';
+import './index.css';
 
 class Instagram extends Component {
   constructor(props) {
@@ -33,7 +34,8 @@ class Instagram extends Component {
 
     return (
       <div className='container'>
-      <img src={instaLogo} alt="Instagram Logo" style={divStyle}/>
+        <h1 className="green-text">What's up?</h1>
+        <img src={instaLogo} alt="Instagram Logo" style={divStyle}/>
         <Slider images={this.state.imageUrl} isInfinite delay={5000}>
           {this.state.imageUrl.map((image, key) => <div key={key}><img src={image} /></div>)}
         </Slider>

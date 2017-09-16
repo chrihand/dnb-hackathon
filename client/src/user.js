@@ -62,9 +62,9 @@ class User extends Component {
     return (
       <div>
         <p>{this.state.name}</p>
-        <p>{this.state.age} years old</p>
-        <p>{this.state.relationship}</p>
-        <p>{this.state.income}</p>
+        {/*<p>{this.state.age} years old</p>*/}
+        {/*<p>{this.state.relationship}</p>*/}
+        {/*<p>{this.state.income}</p>*/}
       </div>
     );
   }

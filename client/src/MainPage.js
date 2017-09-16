@@ -13,19 +13,23 @@ class MainPage extends Component {
       <div className="App">
         <header className="green white-text">
           <img src={logoDnb} className="logo" alt="logo" />
-          <img src={user} className="user" alt="user profile" />
+          <div className="user-wrapper">
+            <img src={user} className="user" alt="user profile" />
+            <User className="white-text"/>
+          </div>
         </header>
         <div className="container">
           <h1 className="green-text">
             It's a match!
           </h1>
-          <h2 className="green-text">
+          <h2 className="green-text lovers-top">
             You
           </h2>
           <span className="green-text heart">♡</span>
-          <h2 className="green-text">
+          <h2 className="green-text lovers-bottom">
             Area
           </h2>
+
           <div className="circle-wrapper green-text">
             <div className="circle">
               <div className="value">
@@ -36,7 +40,7 @@ class MainPage extends Component {
               </div>
             </div>
             <h3>
-              Estimated floor space
+              Expected floor space
             </h3>
           </div>
           <div className="circle-wrapper green-text">
@@ -65,12 +69,14 @@ class MainPage extends Component {
               Average
             </h3>
           </div>
+
+          <Instagram/>
+          {/*<User/>*/}
         </div>
+
         <div className="map-background">
 
         </div>
-        <Instagram/>
-        <User/>
       </div>
     );
   }
