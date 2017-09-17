@@ -19,7 +19,7 @@ class MainPage extends Component {
           </div>
         </header>
         <div className="container">
-	    	<div className="card">
+	    	<div className="card overlay">
 	          <h1 className="green-text">
 	            It's a match!
 	          </h1>
@@ -31,7 +31,7 @@ class MainPage extends Component {
 	            [Area]
 	          </h2>
 	        </div>
-	        <div className="circles">
+	        <div className="circles" id="circles">
 	          <div className="circle-wrapper green-text">
 	            <div className="circle">
 	              <div className="value">
@@ -51,7 +51,7 @@ class MainPage extends Component {
 	                15
 	              </div>
 	              <div className="unit">
-	                min
+	                minutes
 	              </div>
 	            </div>
 	            <h3 className="green-text">
@@ -76,13 +76,16 @@ class MainPage extends Component {
          	<h1 className="green-text">What's up at [Area]?</h1>
         	<Instagram/>
         	{/*<User/>*/}
-        	<button>Find me another area</button>
+        	<button className="overlay">Find me another area</button>
         </div>
 
 
 
         <div className="map-background"></div>
-        <div className="scroll-indicator"></div>
+        <a className="scroll-indicator overlay" href="#circles">
+        	<div className="chev">
+        	</div>
+        </a>
       </div>
     );
   }

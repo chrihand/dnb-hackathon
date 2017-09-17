@@ -3,19 +3,32 @@
 	z-index: -100;
 	top: 0;
 	background-image: url("./map-prntScr.jpg");
+	background-position: bottom;
 	width: 100%;
 	height: 100vh;
 }
 
 .scroll-indicator {
-	background-image: url("./down-chevron.svg");
 	position: absolute;
-	top: 70vh;
+	top: 80vh;
 	height: 80px;
 	width: 80px;
 	background-color: white;
 	border-radius: 80px;
 	color: #007272;
 	left: calc(50% - 40px);
+	margin-right: auto;
+}
+
+.scroll-indicator .chev {
+	background-image: url("./down-chevron.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center; 
+	height: 40px;
+	width: 40px;
+	color: #007272;
 	margin-right: auto; 
+	margin-left: auto;
+	padding-top: 40px;
 }

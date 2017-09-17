@@ -46,7 +46,11 @@ header img {
 	padding: 12px;
 	border-radius: 20px;
 	opacity: 0.90;
-	margin-bottom: 40vh;
+	margin-bottom: 50vh;
+}
+
+.overlay {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .heart {
@@ -112,8 +116,10 @@ header img {
 .circle .unit {
 	position: absolute;
 	top: 65px;
-	left: 45px;
+	left: 0;
+	width: 100%;
 	font-weight: bold;
+	text-align: center;
 }
 
 .circle .unit .raised {
