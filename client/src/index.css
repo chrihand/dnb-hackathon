@@ -132,6 +132,7 @@ button {
 	width: 80%;
 	font-family: inherit;
 	border: none;
+	border-radius: 5px;
 	margin: 50px 0 50px 0;
 	font-size: 1.2em;
 	background-color: #f06d00;
