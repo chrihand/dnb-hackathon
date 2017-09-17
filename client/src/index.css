@@ -1,5 +1,108 @@
+@font-face {
+	font-family: Fedra sans pro;
+    src: url(Fedra-Sans-Pro.ttf);
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Fedra sans pro", sans-serif;
+}
+
+header {
+	padding: 15px;
+	vertical-align: middle;
+	text-align: left;
+}
+
+header img {
+	height: 50px;
+}
+
+.user-wrapper {
+	float: right;
+	width: 50%;
+}
+
+.user {
+	border-radius: 50px;
+	display: inline-block;
+	float: right;
+	margin-left: 10px;
+}
+
+.user-wrapper p {
+	text-align: right;
+}
+
+.container {
+	padding: 15px;
+}
+
+.heart {
+	font-size: 150px;
+	height: 150px;
+	display: block;
+	line-height: 130px;
+}
+
+.lovers-top {
+	margin-bottom: 0;
+}
+
+.lovers-bottom {
+	margin-top: 0;
+}
+
+.green-text {
+	color: #007272;
+}
+
+.white-text {
+	color: white;
+}
+
+.green {
+	background-color: #007c85;
+}
+
+.white {
+	background-color: white;
+}
+
+.rsc-navigation {
+	background-image: url("./right-chevron.svg") !important;
+}
+
+
+/*Circles*/
+.circle-wrapper {
+	padding-top: 40px;
+}
+
+.circle {
+	border: solid 4px #007c85;
+	border-radius: 100px;
+	height: 100px;
+	width: 100px;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*Circles*/
+.circle .value {
+	font-size: 55px;
+}
+
+.circle .unit {
+	position: absolute;
+	top: 65px;
+	left: 45px;
+	font-weight: bold;
+}
+
+.circle .unit .raised {
+	font-size: 0.7em;
+	position: absolute;
 }
