@@ -39,11 +39,25 @@ header img {
 	padding: 15px;
 }
 
+.card {
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 12px;
+	border-radius: 20px;
+	opacity: 0.90;
+	margin-bottom: 50vh;
+}
+
+.overlay {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .heart {
-	font-size: 150px;
-	height: 150px;
+	font-size: 80px;
+	height: 80px;
 	display: block;
-	line-height: 130px;
+	line-height: 68px;
 }
 
 .lovers-top {
@@ -76,6 +90,10 @@ header img {
 
 
 /*Circles*/
+.circles {
+	padding-bottom: 40px;
+}
+
 .circle-wrapper {
 	padding-top: 40px;
 }
@@ -98,11 +116,25 @@ header img {
 .circle .unit {
 	position: absolute;
 	top: 65px;
-	left: 45px;
+	left: 0;
+	width: 100%;
 	font-weight: bold;
+	text-align: center;
 }
 
 .circle .unit .raised {
 	font-size: 0.7em;
 	position: absolute;
+}
+
+button {
+	padding: 20px;
+	width: 80%;
+	font-family: inherit;
+	border: none;
+	border-radius: 5px;
+	margin: 50px 0 50px 0;
+	font-size: 1.2em;
+	background-color: #f06d00;
+	color: white;
 }
