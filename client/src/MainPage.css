@@ -2,4 +2,20 @@
 	position: absolute;
 	z-index: -100;
 	top: 0;
+	background-image: url("./map-prntScr.jpg");
+	width: 100%;
+	height: 100vh;
+}
+
+.scroll-indicator {
+	background-image: url("./down-chevron.svg");
+	position: absolute;
+	top: 70vh;
+	height: 80px;
+	width: 80px;
+	background-color: white;
+	border-radius: 80px;
+	color: #007272;
+	left: calc(50% - 40px);
+	margin-right: auto; 
 }
