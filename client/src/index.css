@@ -19,9 +19,20 @@ header img {
 	height: 50px;
 }
 
+.user-wrapper {
+	float: right;
+	width: 50%;
+}
+
 .user {
 	border-radius: 50px;
+	display: inline-block;
 	float: right;
+	margin-left: 10px;
+}
+
+.user-wrapper p {
+	text-align: right;
 }
 
 .container {
@@ -32,7 +43,15 @@ header img {
 	font-size: 150px;
 	height: 150px;
 	display: block;
-	vertical-align: center;
+	line-height: 130px;
+}
+
+.lovers-top {
+	margin-bottom: 0;
+}
+
+.lovers-bottom {
+	margin-top: 0;
 }
 
 .green-text {
@@ -51,9 +70,14 @@ header img {
 	background-color: white;
 }
 
+.rsc-navigation {
+	background-image: url("./right-chevron.svg") !important;
+}
+
+
 /*Circles*/
 .circle-wrapper {
-	margin-bottom: 60px;
+	padding-top: 40px;
 }
 
 .circle {
