@@ -2,38 +2,219 @@ var json = require('./husholdings_typer.json')
 
 var alders_grupper = require('./ligninger_alder_inntekt_bydel.json')
 
-console.log(['json', json]);
+var alders_grupper_spes = require('./aldersgrupper_bydeler.json')
+//console.log(['json', json]);
 
 
 var area_list = ["Gamle Oslo", "Grünerløkka", "Sagene", "St. Hanshaugen", "Frogner",
 "Ullern", "Vestre Aker", "Nordre Aker", "Bjerke", "Grorud", "Stovner", "Alna", "Østensjø",
 "Nordstrand", "Søndre Nordstrand", "Sentrum", "Marka", "Uoppgitt bydel Oslo"]
 
-//ligninger_alder_inntekt_bydel: sted, gruppe, aar, kategori
-//relevant data: sted, gruppe, 2015, inntekt
+//prices sqr.meter
+var area_prices = [75100, 77000, 79700, 83700, 88300,
+76500, 68200, 82500, 61600, 51600, 47300, 53200, 58100,
+64000, 46200, 72200, 72200, 77200]
+//NB! Sentrum og marka og uoppgitt har faatt snittpris for oslo.. ikke helt reelt
 
-
-
-function getArea_income(inntekt) {
-
+//based on loan and wished housing size
+function getArea_prices(loan, size) {
 
 
 }
 
 
+//finds and returns list of 3 areas w. most ppl in same age-group
+function getArea_age(alder) {
+  var relevant_ar = {"Gamle Oslo":0, "Grünerløkka":0, "Sagene":0,
+  "St. Hanshaugen":0, "Frogner":0, "Ullern":0, "Vestre Aker":0, "Nordre Aker":0,
+  "Bjerke":0, "Grorud":0, "Stovner":0, "Alna":0, "Østensjø":0,
+  "Nordstrand":0, "Søndre Nordstrand":0, "Sentrum":0, "Marka":0, "Uoppgitt bydel Oslo":0}
+
+  //16-19 aar
+  if (alder < 19) {
+    var start = 600
+    for (var i = 0; i < 18; i++) {
+      relevant_ar[area_list[i]] = alders_grupper_spes.dataset.value[start]
+      start = start + 250
+      //relevant_ar[area_list[i]] = relevant_ar[area_list[i]] + alders_grupper_spes.dataset.value[start]
+      start = start + 250
+    }
+  }
+  //20-44
+  else if (alder < 45) {
+
+    var start = 625
+    for (var i = 0; i < 18; i++) {
+      relevant_ar[area_list[i]] = alders_grupper_spes.dataset.value[start]
+      start = start + 250
+      //relevant_ar[area_list[i]] = relevant_ar[area_list[i]] + alders_grupper_spes.dataset.value[start]
+      start = start + 250
+    }
+  }
+
+  //45-66
+  else if (alder < 67) {
+    var start = 650
+    for (var i = 0; i < 18; i++) {
+      relevant_ar[area_list[i]] = alders_grupper_spes.dataset.value[start]
+      start = start + 250
+      //relevant_ar[area_list[i]] = relevant_ar[area_list[i]] + alders_grupper_spes.dataset.value[start]
+      start = start + 250
+    }
+  }
+  //67-79
+  else if (alder < 80) {
+    var start = 675
+    for (var i = 0; i < 18; i++) {
+      relevant_ar[area_list[i]] = alders_grupper_spes.dataset.value[start]
+      start = start + 250
+      //relevant_ar[area_list[i]] = relevant_ar[area_list[i]] + alders_grupper_spes.dataset.value[start]
+      start = start + 250
+    }
+  }
+  //80-89
+  else if (alder < 89) {
+    var start = 700
+    for (var i = 0; i < 18; i++) {
+      relevant_ar[area_list[i]] = alders_grupper_spes.dataset.value[start]
+      start = start + 250
+      //relevant_ar[area_list[i]] = relevant_ar[area_list[i]] + alders_grupper_spes.dataset.value[start]
+      start = start + 250
+    }
+  }
+  //90+
+  else {
+    var start = 725
+    for (var i = 0; i < 18; i++) {
+      relevant_ar[area_list[i]] = alders_grupper_spes.dataset.value[start]
+      start = start + 250
+      //relevant_ar[area_list[i]] = relevant_ar[area_list[i]] + alders_grupper_spes.dataset.value[start]
+      start = start + 250
+    }
+  }
+
+  //find three best areas
+  var best = area_list[0]
+  var nestbest;
+  var tredje;
+
+  highest = 0
+  for (var i = 0; i < 17; i++) {
+    if (relevant_ar[area_list[i]] > highest && best != area_list[i]) {
+      nestbest = area_list[i]
+      highest = relevant_ar[area_list[i]]
+    }
+  }
+
+  highest = 0
+  for (var i = 0; i < 17; i++) {
+    if (relevant_ar[area_list[i]] > highest && best != area_list[i] && nestbest != area_list[i]) {
+      tredje = area_list[i]
+      highest = relevant_ar[area_list[i]]
+    }
+  }
+
+  income_best = [best, nestbest, tredje]
+
+  return income_best
+
+}
+
+//ligninger_alder_inntekt_bydel: sted, gruppe, aar, kategori
+//relevant data: sted, gruppe, 2015, inntekt
+
+/*
+alders_grupper
+alle
+"17-34": "17-34 år",
+"35-66": "35-66 år",
+"67+": "67 år eller eldre"
+*/
 
 
+function getArea_income(inntekt, alder) {
 
+  var relevant_a = {"Gamle Oslo":0, "Grünerløkka":0, "Sagene":0,
+  "St. Hanshaugen":0, "Frogner":0, "Ullern":0, "Vestre Aker":0, "Nordre Aker":0,
+  "Bjerke":0, "Grorud":0, "Stovner":0, "Alna":0, "Østensjø":0,
+  "Nordstrand":0, "Søndre Nordstrand":0, "Sentrum":0, "Marka":0, "Uoppgitt bydel Oslo":0}
 
+  //17-34
+  if (alder < 35) {
 
+    var start = 87
+    for (var i = 0; i < 18; i++) {
+      relevant_a[area_list[i]] = alders_grupper.dataset.value[start]
+      start = start + 308
+    }
+  }
+  //mellom 35-66
+  else if (alder < 67) {
 
+    var start = 164
+    for (var i = 0; i < 18; i++) {
+      relevant_a[area_list[i]] = alders_grupper.dataset.value[start]
+      start = start + 308
+    }
+  }
 
+  //over 66
+  else {
 
-//console.log(json.dataset.dimension.id[]
+    var start = 241
+    for (var i = 0; i < 18; i++) {
+      relevant_a[area_list[i]] = alders_grupper.dataset.value[start]
+      start = start + 308
+    }
+  }
 
-//console.log(json.dataset.value[json.dataset.dimension.id["120103", "002", "2016", 0]])
+  //beregne distance fra verdier ifht denne personens Lonn
 
-//console.log(json.dataset.value[3])
+  inntekt_diff = new Array(18)
+
+  for (var i = 0; i < 18; ++i) {
+      inntekt_diff[i] = inntekt - relevant_a[area_list[i]]
+        if (inntekt_diff[i] < 0) {
+          inntekt_diff[i] = inntekt_diff[i]* (-1)
+        }
+  }
+
+  //find three best areas
+  var best = area_list[0]
+  var nestbest;
+  var tredje;
+
+  //set 1mill (higher than all)
+  var lowest = 1000000
+  for (var i = 1; i < 17; i++) {
+    if (inntekt_diff[i] < lowest) {
+      best = area_list[i]
+      lowest = inntekt_diff[i]
+    }
+  }
+
+  lowest = 1000000
+  for (var i = 0; i < 17; i++) {
+    if (inntekt_diff[i] < lowest && best != area_list[i]) {
+      nestbest = area_list[i]
+      lowest = inntekt_diff[i]
+    }
+  }
+
+  lowest = 1000000
+  for (var i = 0; i < 17; i++) {
+    if (inntekt_diff[i] < lowest && best != area_list[i] && nestbest != area_list[i]) {
+      tredje = area_list[i]
+      lowest = inntekt_diff[i]
+    }
+  }
+
+  income_best = [best, nestbest, tredje]
+
+  return income_best
+  //return list og three areas with highest number of households in your category
+}
+
 
 //42 omraader, forholder oss til 0 - 17
 //  "030101a": "Gamle Oslo",
@@ -74,8 +255,8 @@ function getArea_income(inntekt) {
 
 //rekkefolge: omraade, kategori, aar (15, 16) >
   //forholde oss til 2016.
-console.log(json.dataset.dimension.Region.category.label["030101a"])
-console.log(json.dataset.dimension.Region.category.index[0])
+//console.log(json.dataset.dimension.Region.category.label["030101a"])
+//console.log(json.dataset.dimension.Region.category.index[0])
 
 
 //find an area based on status (alone, with children, grown up children)
@@ -105,7 +286,6 @@ function getAreas_status(hushtype) {
       //003
       var start = 7
       for (var i = 0; i < 18; i++) {
-        console.log("Area: " + area_list[i] + " " + (relevant_areas[area_list[i]] + json.dataset.value[start]))
         relevant_areas[area_list[i]] = relevant_areas[area_list[i]] + json.dataset.value[start]
         start = start + 22
       }
@@ -158,13 +338,97 @@ function getAreas_status(hushtype) {
         relevant_areas[area_list[i]] = relevant_areas[area_list[i]] + json.dataset.value[start]
         start = start + 22
       }
-
     }
+
+    //find three best areas
+    var best = area_list[0]
+    var nestbest;
+    var tredje;
+
+    var highest = relevant_areas[area_list[0]]
+    for (var i = 1; i < 17; i++) {
+      if (relevant_areas[area_list[i]] > highest) {
+        best = area_list[i]
+        highest = relevant_areas[area_list[i]]
+      }
+    }
+
+    highest = 0
+    for (var i = 0; i < 17; i++) {
+      if (relevant_areas[area_list[i]] > highest && best != area_list[i]) {
+        nestbest = area_list[i]
+        highest = relevant_areas[area_list[i]]
+      }
+    }
+
+    highest = 0
+    for (var i = 0; i < 17; i++) {
+      if (relevant_areas[area_list[i]] > highest && best != area_list[i] && nestbest != area_list[i]) {
+        tredje = area_list[i]
+        highest = relevant_areas[area_list[i]]
+      }
+    }
+
+    income_best = [best, nestbest, tredje]
+
+    return income_best
 
     //return list og three areas with highest number of households in your category
 }
 
 
-getAreas_status('alene')
 
-getAreas_status('med_barn')
+
+function best_a(status_list, age_list, income_list) {
+  var res = new Array(17)
+
+  for (var i = 0; i < 17; i++) {
+    res[i] = 0
+  }
+
+  for (var i = 0; i < 17; i++) {
+    //for each of the three elements in the list
+    for (var j = 0; j < 3; j++) {
+      if (status_list[j] == area_list[i]) {
+        res[i] = res[i] + (j+1)
+      }
+      if (age_list[j] == area_list[i]) {
+        res[i] = res[i] + (j+1)
+      }
+      if (income_list[j] == area_list[i]) {
+        res[i] = res[i] + (j+1)
+      }
+    }
+  }
+
+  highest = 0
+  index_high = 0
+
+  for (var i = 0; i < 17; i++) {
+    if (res[i] > highest) {
+      index_high = i
+      highest = res[i]
+    }
+  }
+
+  return area_list[index_high]
+
+}
+
+//gyldige statuser: 'med_barn', 'uten_eller_voksne_barn', 'alene'
+function find_area(status, age, income) {
+
+  var status_list = getAreas_status(status)
+
+  var age_list = getArea_age(age)
+
+  var income_list = getArea_income(income, age)
+
+  var best = best_a(status_list, age_list, income_list)
+
+  return best
+
+
+}
+
+find_area('med_barn', 37, 800000)
