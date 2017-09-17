@@ -15,6 +15,7 @@ class Instagram extends Component {
   };
 
   componentWillMount = () => {
+    const area = this.convertPlaceToTag(this.props.area)
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = "https://api.instagram.com/v1/tags/nordreaker/media/recent?access_token=22168267.538dd5c.ab359fbf7e984e36bcb62e93189ed8c5"; // site that doesn’t send Access-Control-*
     fetch(proxyurl + url)
@@ -25,12 +26,19 @@ class Instagram extends Component {
       });
     })
     .catch(console.log("Can’t access " + url + " response. Blocked by browser?"))
-  }
+  };
+
+  convertPlaceToTag = (area) => {
+    area = area.toLowerCase().replace(/\s/g, '');
+    return area;
+  };
 
   render() {
     const divStyle = {
       height: '40px'
     };
+
+
 
     return (
       <div className='container'>
